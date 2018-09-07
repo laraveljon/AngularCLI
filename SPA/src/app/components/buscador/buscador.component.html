@@ -1,0 +1,38 @@
+<h1 class="animated fadeIn fast">Buscando : <small>{{termino}}</small></h1>
+<hr>
+
+<div class="row animated fadeIn fast" *ngIf="heroes.length==0">
+  <div class="col-md-12">
+    <div class="alert alert-info" role="alert">
+      NO existen resultados con el termino :{{termino}}
+    </div>
+  </div>
+</div>
+<div class="card-columns animated fadeIn" >
+<!--
+A qui por esta parte se hace un metodo de anlgular 2 que es el for
+sirve para duplicar array... con eello se crea una nueva variable heroe
+ y despues se llama el array heroes que proviene del archivo heroes.component.ts
+ "heroes:Heroe[] =[];"
+<div class="card" *ngFor="let heroe of heroes">
+-->
+  <div class="card" *ngFor="let heroe of heroes; let id = index">
+    <!--img class="card-img-top" src="assets/img/batman.png" alt="Card image cap"-->
+    <!-- Esto es con metodo JS -->
+    <!--img class="card-img-top" src="{{heroe.img}}" alt="Card image cap"-->
+    <!-- Y por otra parte solamente se llama como angular lamagen-->
+    <img class="card-img-top" [src]="heroe.img" [alt]="heroe.nombre">
+    <div class="card-body">
+      <!-- Utilizando la interplacion -->
+      <h4 class="card-title">{{ heroe.nombre }}</h4>
+      <p class="card-text"> {{ heroe.bio }}</p>
+      <p class="card-text"><small class="text-muted">{{ heroe.aparicion}}</small></p>
+      <!-- Relizar boton para direccionar routes -->
+      <button (click)="verHeroe(id)"
+      type="button" class="btn btn-outline-dark btn-block">Ver mas...</button>
+      <!--a [routerLink]="['/heroe',id]" class="btn-outline-dark">Ver mas ....</a-->
+    </div>
+  </div>
+
+
+</div>
